@@ -47,6 +47,7 @@ class GroceryCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 class GroceryUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    template_name_suffix = '_update'
     model = Grocery
     # fields = ['product', 'quantity','status','date']
     form_class = AddGraceryListForm
