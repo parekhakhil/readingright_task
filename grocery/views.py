@@ -32,6 +32,7 @@ class GroceryListView(LoginRequiredMixin,ListView):
             'user').filter(user=self.request.user)  # noqa
         if date:
             queryset = queryset.filter(date = date)
+        queryset = queryset.order_by('-date')
         return queryset
 
 class GroceryDetailView(LoginRequiredMixin,DetailView):
