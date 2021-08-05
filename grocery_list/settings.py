@@ -39,10 +39,11 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "users",
     'crispy_forms',
+    'grocery',
     # 'auth',
 ]
 
-LOGIN_REDIRECT_URL = 'users:register'
+LOGIN_REDIRECT_URL = 'grocery:grocery-list'
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
