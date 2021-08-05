@@ -19,6 +19,7 @@ def home(request):
 
 
 class GroceryListView(LoginRequiredMixin,ListView):
+
     login_url = '/login/'
     redirect_field_name = 'login'
     model = Grocery
@@ -26,8 +27,11 @@ class GroceryListView(LoginRequiredMixin,ListView):
     context_object_name = "grocery_list"
     ordering = ["-created_at"]
     def get_queryset(self):
+        date = self.request.GET.get('q',None)
         queryset = Grocery.objects.select_related(
             'user').filter(user=self.request.user)  # noqa
+        if date:
+            queryset = queryset.filter(date = date)
         return queryset
 
 class GroceryDetailView(LoginRequiredMixin,DetailView):

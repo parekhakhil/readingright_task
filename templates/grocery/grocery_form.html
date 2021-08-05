@@ -5,12 +5,31 @@
     <h1>Grocery List</h1>
     <form method="POST">
         {% csrf_token %}
-        <fieldset class="form-group">
-            {{ form|crispy }}
-            {{from.get_status_display}}
-        </fieldset>
+        {{ form.non_field_errors }}
+        <!-- <fieldset class="form-group"> -->
+            <div class="form-group">
+                {{ form.product.errors }}
+                <label for="id_product">Item Name:</label>
+                {{ form.product }}
+            </div>
+            <div class="form-group">
+                {{ form.quantity.errors }}
+                <label for="id_quantity">Item quantity:</label>
+                {{ form.quantity }}
+            </div>
+            <div class="form-group">
+                {{ form.status.errors }}
+                <label for="id_status">Item Status:</label>
+                {{ form.status }}
+            </div>
+            <div class="form-group">
+                {{ form.date.errors }}
+                <label for="id_date">Date:</label>
+                {{ form.date }}
+            </div>
+        <!-- </fieldset> -->
         <div class="form-group">
-            <input type="submit" value="Add" class="btn btn-danger">
+            <button type="submit" value="Add" class="btn btn-danger">Add</button>
         </div>
     </form>
 </div>
@@ -21,7 +40,6 @@
         $("#id_date").datetimepicker({
             format: 'd-m-Y',
         });
-        console.log(document.getElementById('id_date').value)
     });
 </script>
 {%endblock%}

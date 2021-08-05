@@ -9,6 +9,3 @@ class AddGraceryListForm(forms.ModelForm):
     class Meta:
         model = Grocery
         fields = ['product','quantity','status','date']
-        widgets = {
-            'date': DateInput(),
-        }
