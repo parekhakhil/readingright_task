@@ -4,11 +4,14 @@
 
 {% block content %}
 <div class="content-section">
-    <div class="media">
-        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
-        <div class="media-body">
-            <h2 class="account-heading">{{ user.username }}</h2>
-            <p class="text-secondary">{{ user.email }}</p>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ user.username }}</h5>
+                <p class="card-text">{{ user.email }}</p>
+                
+            </div>
         </div>
     </div>
 </div>
