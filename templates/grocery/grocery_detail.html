@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h2 class="article-title">{{ object.product }}</h2>
+        <p class="article-content">{{ object.quantity }}</p>
+        {% if grocery.status == 'not_available' %}
+        <p class="text-danger">Not Available</p>
+        {% elif grocery.status == 'pending' %}
+        <p class="text-info">Pending</p>
+        {% elif grocery.status == 'bought' %}
+        <p class="text-success">Bought</p>
+        {%endif%}
+        <small class="text-muted">{{ object.date|date:"F d, Y" }}</small>
+        {% if object.user == user %}
+        <div>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'grocery:grocery-update' object.id %}">Update</a>
+            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'grocery:grocery-delete' object.id %}">Delete</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock content %}

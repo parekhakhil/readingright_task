@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container mt-5">
+    <h1>Grocery List</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            {{ form|crispy }}
+            {{from.get_status_display}}
+        </fieldset>
+        <div class="form-group">
+            <input type="submit" value="Add" class="btn btn-danger">
+        </div>
+    </form>
+</div>
+{% endblock content %}
+{% block extrascripts%}
+<script>
+    $(function () {
+        $("#id_date").datetimepicker({
+            format: 'd-m-Y',
+        });
+        console.log(document.getElementById('id_date').value)
+    });
+</script>
+{%endblock%}
